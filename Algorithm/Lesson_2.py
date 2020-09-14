@@ -38,17 +38,32 @@ print(-1050 //10)
 # This is only applicable to the natural numbers.
 
 # 16  -->  1 + 6 = 7
-j = 16
-k = 0
-while j > 0:
-    p = j % 10
-    k += p
-    j //= 10
+def sum_of_digital(number):
+    summ = 0
+    while number > 0:
+        summ += number % 10
+        # k += p
+        number //= 10
+    return summ
 
-print(k)
 
+def digital_root(number):
+    while number > 10:
+        number = sum_of_digital(number)
+    return number
+
+print(digital_root(942))
 
 # 942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+
+# 3 way
+def recursion_digital_root(number):
+    if number >= 10:
+        number = sum_of_digital(number)
+        return recursion_digital_root(number)
+    else:
+        return number
+
 x = str(942)
 r = 0
 while len(x) > 1:
@@ -58,6 +73,7 @@ while len(x) > 1:
     x = str(r)
 print(r)
 
+# second way
 
 
 # 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
